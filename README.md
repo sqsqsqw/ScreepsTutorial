@@ -10,6 +10,10 @@
 
 ### 第一关：游戏UI和基本脚本
 
+- [find函数](https://docs.screeps.com/api/#Room.find)
+- [moveTo函数](https://docs.screeps.com/api/#Creep.moveTo)
+- [harvest函数](https://docs.screeps.com/api/#Creep.harvest)
+
 ```javascript
 // spawnCreep 函数用于生成Creep，并规定对应的属性。
 Game.spawns['Spawn1'].spawnCreep( [WORK, CARRY, MOVE], 'Harvester1' );
@@ -24,43 +28,7 @@ Game.spawns['Spawn1'].spawnCreep( [WORK, CARRY, MOVE], 'Harvester1' );
           (target, [opts]) 在同一房间内找到目标的最佳路径，然后移动到该空间。如果目标位于另一个房间中，则相应的出口将用作目标。
     harvest(target) 从矿物和沉积物中获取能源。目标必须在Screep附近的正方形上。
 */
-module.exports.loop = function () {
-    var creep = Game.creeps['Harvester1'];
-    var sources = creep.room.find(FIND_SOURCES);
-    if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0]);
-    }
-}
-```
 
-- [find函数](https://docs.screeps.com/api/#Room.find)
-- [moveTo函数](https://docs.screeps.com/api/#Creep.moveTo)
-- [harvest函数](https://docs.screeps.com/api/#Creep.harvest)
-
-```javascript
-module.exports.loop = function () {
-    var creep = Game.creeps['Harvester1'];
-
-    if(creep.store.getFreeCapacity() > 0) {
-        var sources = creep.room.find(FIND_SOURCES);
-        if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(sources[0]);
-        }
-    }
-    else {
-        if( creep.transfer(Game.spawns['Spawn1'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
-            creep.moveTo(Game.spawns['Spawn1']);
-        }
-    }
-}
-```
-
-```javascript
-Game.spawns['Spawn1'].spawnCreep( [WORK, CARRY, MOVE], 'Harvester2' );
-```
-
-
-```javascript
 module.exports.loop = function () {
     
     for(var name in Game.creeps) {
@@ -78,6 +46,7 @@ module.exports.loop = function () {
             }
         }
     }
+    
 }
 ```
 ```javascript
