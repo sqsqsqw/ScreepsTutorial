@@ -10,9 +10,9 @@
 
 ### 第一关：游戏UI和基本脚本
 
-- [find函数](https://docs.screeps.com/api/#Room.find)
-- [moveTo函数](https://docs.screeps.com/api/#Creep.moveTo)
-- [harvest函数](https://docs.screeps.com/api/#Creep.harvest)
+- [find函数](https://screeps-cn.github.io/api/#Room.find)
+- [moveTo函数](https://screeps-cn.github.io/api/#Creep.moveTo)
+- [harvest函数](https://screeps-cn.github.io/api/#Creep.harvest)
 
 ```javascript
 // spawnCreep 函数用于生成Creep，并规定对应的属性。
